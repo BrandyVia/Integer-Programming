@@ -1,0 +1,41 @@
+---
+title: "Integer Programming"
+author: "Brandy Via"
+output:
+  pdf_document: default
+  html_notebook:
+    highlight: textmate
+    theme: cerulean
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+***
+Let's define the variables first
+x1 is number of workers started on Sunday
+x2 is number of workers started on Monday
+x3 is number of workers started on Tuesday
+x4 is number of workers started on Wednesday
+x5 is number of workers started on Thursday
+x6 is number of workers started on Friday
+x7 is number of workers started on Saturday
+
+```{r}
+library(lpSolveAPI)
+x <- read.lp("schedule.lp")
+x
+solve(x)
+#Total Cost
+get.objective(x)
+#Number of workers started on Sun-Sat
+get.variables(x)
+#Number of workers required on Sun-Sat
+get.constraints(x)
+```
+
+***
+
